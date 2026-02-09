@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>XUNTEI | Corset & Designer Dress</title>
+
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --bg2:#111;
+      --text:#f5f5f5;
+      --muted:#bdbdbd;
+      --line:rgba(255,255,255,0.12);
+      --btn:#ffffff;
+      --btnText:#000000;
+      --shadow: 0 20px 60px rgba(0,0,0,0.55);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background: radial-gradient(circle at top, #1a1a1a, #050505);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit;}
+
+    .container{
+      width:92%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* NAV */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-wrap{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 0;
+    }
+
+    .logo{
+      font-size:22px;
+      letter-spacing:3px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      font-size:14px;
+      color:var(--muted);
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .nav-links a:hover{color:var(--text);}
+
+    .lang-btn{
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      cursor:pointer;
+      font-size:12px;
+      color:var(--text);
+      background:transparent;
+      transition:0.2s;
+    }
+
+    .lang-btn:hover{
+      background:var(--btn);
+      color:var(--btnText);
+    }
+
+    /* HERO */
+    header{
+      padding:80px 0 40px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap:30px;
+      align-items:center;
+    }
+
+    .hero h1{
+      font-size:56px;
+      line-height:1.05;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .hero p{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.6;
+      max-width:520px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      margin-top:24px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:12px 18px;
+      border-radius:10px;
+      border:1px solid var(--line);
+      cursor:pointer;
+      font-weight:600;
+      font-size:14px;
+      transition:0.2s;
+      display:inline-block;
+    }
+
+    .btn.primary{
+      background:var(--btn);
+      color:var(--btnText);
+      border:none;
+    }
+
+    .btn.primary:hover{opacity:0.85;}
+
+    .btn.outline:hover{
+      background:rgba(255,255,255,0.06);
+    }
+
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+      min-height:340px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-60px;
+      background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%);
+      transform: rotate(25deg);
+    }
+
+    .hero-card .inner{
+      position:relative;
+      z-index:2;
+    }
+
+    .tag{
+      display:inline-block;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:10px;
+    }
+
+    .hero-card h3{
+      font-size:18px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
+
+    .hero-card p{
+      margin-top:8px;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    /* SECTION */
+    section{padding:55px 0;}
+
+    .section-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:20px;
+      margin-bottom:20px;
+      flex-wrap:wrap;
+    }
+
+    .section-title h2{
+      font-size:22px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .section-title span{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+      max-width:520px;
+    }
+
+    /* PRODUCT GRID */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:16px;
+    }
+
+    .product{
+      background: rgba(255,255,255,0.03);
+      border:1px solid var(--line);
+      border-radius:16px;
+      overflow:hidden;
+      transition:0.2s;
+      cursor:pointer;
+    }
+
+    .product:hover{
+      transform: translateY(-4px);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .thumb{
+      height:210px;
+      background: linear-gradient(120deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-bottom:1px solid var(--line);
+      position:relative;
+    }
+
+    .thumb small{
+      color:rgba(255,255,255,0.35);
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:11px;
+    }
+
+    .product .info{
+      padding:14px;
+    }
+
+    .product h4{
+      font-size:14px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
+
+    .product p{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    .product .meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:12px;
+    }
+
+    .pill{
+      font-size:11px;
+      color:var(--muted);
+      border:1px solid var(--line);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+
+    .buy{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:var(--text);
+    }
+
+    /* ABOUT */
+    .about{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:20px;
+    }
+
+    .about-box{
+      background: rgba(255,255,255,0.03);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px;
+    }
+
+    .about-box h3{
+      font-size:16px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-bottom:10px;
+    }
+
+    .about-box p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* FEEDBACK */
+    .feedback{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+
+    .review{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .review p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:13px;
+      margin-bottom:12px;
+    }
+
+    .review strong{
+      letter-spacing:1px;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+
+    /* FOOTER */
+    footer{
+      border-top:1px solid var(--line);
+      padding:28px 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .footer-wrap{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .social{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .social a{
+      border:1px solid var(--line);
+      padding:8px 12px;
+      border-radius:999px;
+      transition:0.2s;
+    }
+
+    .social a:hover{
+      background:rgba(255,255,255,0.08);
+      color:var(--text);
+    }
+
+    /* FLOAT CHAT */
+    .float-chat{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:9999;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .float-chat a{
+      background:var(--btn);
+      color:var(--btnText);
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:13px;
+      box-shadow: var(--shadow);
+      text-align:center;
+      min-width:140px;
+    }
+
+    .float-chat a.secondary{
+      background:rgba(255,255,255,0.1);
+      color:var(--text);
+      border:1px solid var(--line);
+      box-shadow:none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(2,1fr);}
+      .about{grid-template-columns:1fr;}
+      .feedback{grid-template-columns:1fr;}
+      .hero h1{font-size:44px;}
+    }
+
+    @media (max-width: 520px){
+      .grid{grid-template-columns:1fr;}
+      .hero h1{font-size:38px;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-wrap">
+      <div class="logo">XUNTEI</div>
+
+      <div class="nav-links">
+        <a href="#best" data-vi="Bán chạy" data-en="Best Sellers">Bán chạy</a>
+        <a href="#new" data-vi="Bộ sưu tập" data-en="Collection">Bộ sưu tập</a>
+        <a href="#about" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
+        <a href="#review" data-vi="Đánh giá" data-en="Reviews">Đánh giá</a>
+        <a href="#contact" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
+        <button class="lang-btn" onclick="toggleLang()">VI / EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="container hero">
+      <div>
+        <h1 data-vi="Corset & Váy Thiết Kế" data-en="Corset & Designer Dress">
+          Corset & Váy Thiết Kế
+        </h1>
+
+        <p data-vi="Xuntei là nơi dành cho những cô gái yêu sự sang trọng, tối giản và quyến rũ. Mỗi thiết kế được tạo ra để tôn dáng, nâng thần thái và khiến bạn trở nên nổi bật."
+           data-en="Xuntei is a space for women who love elegance, minimal luxury, and confidence. Each piece is designed to enhance your silhouette and elevate your presence.">
+          Xuntei là nơi dành cho những cô gái yêu sự sang trọng, tối giản và quyến rũ. Mỗi thiết kế được tạo ra để tôn dáng, nâng thần thái và khiến bạn trở nên nổi bật.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#best" data-vi="Xem sản phẩm" data-en="View Products">
+            Xem sản phẩm
+          </a>
+
+          <a class="btn outline" href="#contact" data-vi="Inbox đặt hàng" data-en="Message to Order">
+            Inbox đặt hàng
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="inner">
+          <div class="tag">ONLINE EXCLUSIVE</div>
+
+          <h3 data-vi="Thiết kế tinh tế, form tôn dáng"
+              data-en="Elegant design, flattering fit">
+            Thiết kế tinh tế, form tôn dáng
+          </h3>
+
+          <p data-vi="Giá không hiển thị trên web. Vui lòng inbox để được tư vấn size và nhận bảng giá."
+             data-en="Prices are not displayed. Please message us for size consultation and pricing.">
+            Giá không hiển thị trên web. Vui lòng inbox để được tư vấn size và nhận bảng giá.
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BEST SELLERS -->
+  <section id="best">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-vi="Bán chạy" data-en="Best Sellers">Bán chạy</h2>
+        <span data-vi="Những mẫu được khách yêu thích nhất. Giá sẽ được gửi khi bạn inbox."
+              data-en="Our most loved pieces. Prices will be provided via message.">
+          Những mẫu được khách yêu thích nhất. Giá sẽ được gửi khi bạn inbox.
+        </span>
+      </div>
+
+      <div class="grid">
+        <div class="product">
+          <div class="thumb"><small>Corset</small></div>
+          <div class="info">
+            <h4>Corset Black Lace</h4>
+            <p data-vi="Tôn dáng, ôm eo, chất liệu mềm sang."
+               data-en="Waist shaping, elegant lace texture.">
+              Tôn dáng, ôm eo, chất liệu mềm sang.
+            </p>
+            <div class="meta">
+              <span class="pill" data-vi="Inbox nhận giá" data-en="Message for price">Inbox nhận giá</span>
+              <span class="buy" data-vi="Mua" data-en="Buy">Mua</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="thumb"><small>Dress</small></div>
+          <div class="info">
+            <h4 data-vi="Váy Body Sang Trọng" data-en="Luxury Body Dress">Váy Body Sang Trọng</h4>
+            <p data-vi="Form ôm nhẹ, hack dáng, hợp đi tiệc."
+               data-en="Elegant fit, perfect for night events.">
+              Form ôm nhẹ, hack dáng, hợp đi tiệc.
+            </p>
+            <div class="meta">
+              <span class="pill" data-vi="Inbox nhận giá" data-en="Message for price">Inbox nhận giá</span>
+              <span class="buy" data-vi="Mua" data-en="Buy">Mua</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="thumb"><small>Corset</small></div>
+          <div class="info">
+            <h4 data-vi="Corset Satin White" data-en="White Satin Corset">Corset Satin White</h4>
+            <p data-vi="Chất satin sáng, vibe tiểu thư."
+               data-en="Glossy satin, feminine luxury.">
+              Chất satin sáng, vibe tiểu thư.
+            </p>
+            <div class="meta">
+              <span class="pill" data-vi="Inbox nhận giá" data-en="Message for price">Inbox nhận giá</span>
+              <span class="buy" data-vi="Mua" data-en="Buy">Mua</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="thumb"><small>Dress</small></div>
+          <div class="info">
+            <h4 data-vi="Váy Thiết Kế Cúp Ngực" data-en="Strapless Designer Dress">Váy Thiết Kế Cúp Ngực</h4>
+            <p data-vi="Tôn ngực, tôn eo, nhìn rất high-class."
+               data-en="Elegant silhouette, high-class look.">
+              Tôn ngực, tôn eo, nhìn rất high-class.
+            </p>
+            <div class="meta">
+              <span class="pill" data-vi="Inbox nhận giá" data-en="Message for price">Inbox nhận giá</span>
+              <span class="buy" data-vi="Mua" data-en="Buy">Mua</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEW COLLECTION -->
+  <section id="new">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-vi="Bộ sưu tập mới" data-en="New Collection">Bộ sưu tập mới</h2>
+        <span data-vi="Những mẫu mới cập nhật. Inbox để được gửi hình thật và tư vấn size."
+              data-en="New arrivals. Message us for real photos and size consultation.">
+          Những mẫu mới cập nhật. Inbox để được gửi hình thật và tư vấn size.
+        </span>
+      </div>
+
+      <div class="grid">
+        <div class="product">
+          <div class="thumb"><small>New</small></div>
+          <div class="info">
+            <h4 data-vi="Corset Cut-Out" data-en="Cut-Out Corset">Corset Cut-Out</h4>
+            <p data-vi="Thiết kế sexy nhẹ, nổi bật nhưng tinh tế."
+               data-en="Sexy but elegant cut-out details.">
+              Thiết kế sexy nhẹ, nổi bật nhưng tinh tế.
+            </p>
+            <div class="meta">
+              <span class="pill" data-vi="Inbox nhận giá" data-en="Message for price">Inbox nhận giá</span>
+              <span class="buy" data-vi="Mua" data-en="Buy">Mua</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="thumb"><small>New</small></div>
+          <div class="info">
+            <h4 data-vi="Váy Đen Minimal" data-en="Minimal Black Dress">Váy Đen Minimal</h4>
+            <p data-vi="Đơn giản nhưng sang. Dễ phối phụ kiện."
+               data-en="Minimal luxury, easy to style.">
+              Đơn giản nhưng sang. Dễ phối phụ kiện.
+            </p>
+            <div class="meta">
+              <span class="pill" data-vi="Inbox nhận giá" data-en="Message for price">Inbox nhận giá</span>
+              <span class="buy" data-vi="Mua" data-en="Buy">Mua</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="thumb"><small>New</small></div>
+          <div class="info">
+            <h4 data-vi="Váy Trắng Công Chúa" data-en="White Princess Dress">Váy Trắng Công Chúa</h4>
+            <p data-vi="Nhẹ nhàng, nữ tính, cực hợp chụp ảnh."
+               data-en="Soft, feminine, perfect for photos.">
+              Nhẹ nhàng, nữ tính, cực hợp chụp ảnh.
+            </p>
+            <div class="meta">
+              <span class="pill" data-vi="Inbox nhận giá" data-en="Message for price">Inbox nhận giá</span>
+              <span class="buy" data-vi="Mua" data-en="Buy">Mua</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="thumb"><small>New</small></div>
+          <div class="info">
+            <h4 data-vi="Corset Classic Line" data-en="Classic Line Corset">Corset Classic Line</h4>
+            <p data-vi="Thiết kế cổ điển, tôn dáng, cực bền form."
+               data-en="Classic design, strong structure fit.">
+              Thiết kế cổ điển, tôn dáng, cực bền form.
+            </p>
+            <div class="meta">
+              <span class="pill" data-vi="Inbox nhận giá" data-en="Message for price">Inbox nhận giá</span>
+              <span class="buy" data-vi="Mua" data-en="Buy">Mua</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-vi="Giới thiệu Xuntei" data-en="About Xuntei">Giới thiệu Xuntei</h2>
+        <span data-vi="Phong cách tối giản, sang trọng, tôn dáng và tạo khí chất."
+              data-en="Minimal luxury. Elegant silhouette. Confident aura.">
+          Phong cách tối giản, sang trọng, tôn dáng và tạo khí chất.
+        </span>
+      </div>
+
+      <div class="about">
+        <div class="about-box">
+          <h3 data-vi="Tinh thần thiết kế" data-en="Design Philosophy">Tinh thần thiết kế</h3>
+          <p data-vi="Xuntei tập trung vào corset và váy thiết kế, hướng tới sự gợi cảm nhưng không phô. Mỗi sản phẩm đều được chọn form để tạo cảm giác 'đắt tiền' ngay khi mặc."
+             data-en="Xuntei focuses on corsets and designer dresses with an elegant sensual style. Each piece is crafted to look premium the moment you wear it.">
+            Xuntei tập trung vào corset và váy thiết kế, hướng tới sự gợi cảm nhưng không phô. Mỗi sản phẩm đều được chọn form để tạo cảm giác 'đắt tiền' ngay khi mặc.
+          </p>
+        </div>
+
+        <div class="about-box">
+          <h3 data-vi="Bán online 100%" data-en="Online Only">Bán online 100%</h3>
+          <p data-vi="Xuntei hiện chỉ bán online. Bạn có thể inbox để được tư vấn size, gửi hình thật và lựa chọn mẫu phù hợp với dáng người."
+             data-en="Xuntei is 100% online. Message us for sizing consultation, real photos, and recommendations based on your body shape.">
+            Xuntei hiện chỉ bán online. Bạn có thể inbox để được tư vấn size, gửi hình thật và lựa chọn mẫu phù hợp với dáng người.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="review">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-vi="Khách nói gì?" data-en="Customer Reviews">Khách nói gì?</h2>
+        <span data-vi="Feedback demo. Khi có feedback thật Fen sẽ chỉnh lại đúng tên khách."
+              data-en="Demo reviews. We can update with real customer feedback later.">
+          Feedback demo. Khi có feedback thật Fen sẽ chỉnh lại đúng tên khách.
+        </span>
+      </div>
+
+      <div class="feedback">
+        <div class="review">
+          <p data-vi="“Corset lên dáng cực đẹp, mặc vào nhìn eo nhỏ hẳn. Shop tư vấn size chuẩn.”"
+             data-en="“The corset fit is amazing, waist looks so snatched. Great sizing advice.”">
+            “Corset lên dáng cực đẹp, mặc vào nhìn eo nhỏ hẳn. Shop tư vấn size chuẩn.”
+          </p>
+          <strong data-vi="Khách hàng" data-en="Customer">Khách hàng</strong>
+        </div>
+
+        <div class="review">
+          <p data-vi="“Váy thiết kế nhìn sang thật, đi tiệc ai cũng hỏi mua ở đâu.”"
+             data-en="“The dress looks so premium. Everyone asked where I got it.”">
+            “Váy thiết kế nhìn sang thật, đi tiệc ai cũng hỏi mua ở đâu.”
+          </p>
+          <strong data-vi="Khách hàng" data-en="Customer">Khách hàng</strong>
+        </div>
+
+        <div class="review">
+          <p data-vi="“Đóng gói đẹp, chất liệu tốt. Mặc lên đúng vibe tiểu thư.”"
+             data-en="“Beautiful packaging, good fabric. Gives a luxury feminine vibe.”">
+            “Đóng gói đẹp, chất liệu tốt. Mặc lên đúng vibe tiểu thư.”
+          </p>
+          <strong data-vi="Khách hàng" data-en="Customer">Khách hàng</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-vi="Inbox đặt hàng" data-en="Message to Order">Inbox đặt hàng</h2>
+        <span data-vi="Nhấn vào các nền tảng bên dưới để chat trực tiếp với shop."
+              data-en="Click any platform below to message the shop directly.">
+          Nhấn vào các nền tảng bên dưới để chat trực tiếp với shop.
+        </span>
+      </div>
+
+      <div class="social">
+        <a href="https://www.facebook.com/xuantaynguyenn" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/xuntei/" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@xuntei.vn" target="_blank">TikTok</a>
+        <a href="https://shopee.vn/xuntei" target="_blank">Shopee</a>
+      </div>
+
+      <p style="margin-top:16px;color:var(--muted);font-size:13px;line-height:1.7;"
+         data-vi="📌 Lưu ý: Web không hiển thị giá. Vui lòng inbox để được gửi bảng giá + tư vấn size."
+         data-en="📌 Note: Prices are not shown on the website. Please message us for pricing and size consultation.">
+        📌 Lưu ý: Web không hiển thị giá. Vui lòng inbox để được gửi bảng giá + tư vấn size.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-wrap">
+      <div>
+        <strong style="letter-spacing:2px;color:#fff;">XUNTEI</strong><br/>
+        <span data-vi="Corset & Váy Thiết Kế | Online Store"
+              data-en="Corset & Designer Dress | Online Store">
+          Corset & Váy Thiết Kế | Online Store
+        </span>
+      </div>
+
+      <div>
+        <span data-vi="© 2026 Xuntei. All rights reserved."
+              data-en="© 2026 Xuntei. All rights reserved.">
+          © 2026 Xuntei. All rights reserved.
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOAT CHAT -->
+  <div class="float-chat">
+    <a href="https://www.facebook.com/xuantaynguyenn" target="_blank"
+       data-vi="Inbox Facebook" data-en="Facebook Chat">Inbox Facebook</a>
+
+    <a class="secondary" href="#contact"
+       data-vi="Xem liên hệ" data-en="View Contacts">Xem liên hệ</a>
+  </div>
+
+  <script>
+    let currentLang = "vi";
+
+    function toggleLang(){
+      currentLang = currentLang === "vi" ? "en" : "vi";
+      document.querySelectorAll("[data-vi]").forEach(el=>{
+        el.innerText = currentLang === "vi"
+          ? el.getAttribute("data-vi")
+          : el.getAttribute("data-en");
+      });
+    }
+  </script>
+
+</body>
+</html>
