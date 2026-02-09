@@ -60,6 +60,9 @@
       letter-spacing:3px;
       font-weight:700;
       text-transform:uppercase;
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
 
     .nav-links{
@@ -90,12 +93,41 @@
       color:var(--btnText);
     }
 
-    /* HERO */
+    /* HERO BACKGROUND */
     header{
-      padding:80px 0 40px;
+      position:relative;
+      padding:90px 0 60px;
+      overflow:hidden;
+    }
+
+    header::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image: url("images/368846705197865340.jpg");
+      background-size:cover;
+      background-position:center;
+      filter: blur(0px);
+      opacity:0.35;
+      z-index:0;
+    }
+
+    header::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.95)
+      );
+      z-index:1;
     }
 
     .hero{
+      position:relative;
+      z-index:2;
       display:grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap:30px;
@@ -148,14 +180,14 @@
     }
 
     .hero-card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
       border:1px solid var(--line);
       border-radius:18px;
-      padding:18px;
+      padding:22px;
       box-shadow: var(--shadow);
       position:relative;
       overflow:hidden;
-      min-height:340px;
+      min-height:300px;
       display:flex;
       flex-direction:column;
       justify-content:flex-end;
@@ -440,8 +472,8 @@
   <nav>
     <div class="container nav-wrap">
       <div class="logo">
-  <img src="images/2014941056442379832.jpg" alt="XUNTEI" style="height:42px;">
-</div>
+        <img src="images/2014941056442379832.jpg" alt="XUNTEI" style="height:42px;">
+      </div>
 
       <div class="nav-links">
         <a href="#best" data-vi="Bán chạy" data-en="Best Sellers">Bán chạy</a>
@@ -479,7 +511,6 @@
       </div>
 
       <div class="hero-card">
-        <img src="images/368846705197865340.jpg" alt="Xuntei Banner" style="width:100%; border-radius:18px;">
         <div class="inner">
           <div class="tag">ONLINE EXCLUSIVE</div>
 
@@ -788,6 +819,4 @@
   </script>
 
 </body>
-
 </html>
-
